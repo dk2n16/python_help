@@ -46,7 +46,7 @@ def open_geodataframe(shapefile_path, cols=None, index=None, epsg=27700):
         Geodataframe of shapefile opened with columns and index set as selected
 
     """
-    shp = Path(str(shapefile_path)).resolve()
+    shp = Path(str(shapefile_path)).resolve() # String path to shapefile
     gdf = gpd.read_file(shp)
     if cols:
         gdf = gdf[cols]
@@ -75,7 +75,7 @@ def do_spatial_join(gdf_LA, gdf_forest):
 -
     """
     print("WRITE CODE TO DO JOIN AND RETURN JOINED GDF")
-    # CODE
+    # CODE  (gdf_join = sdfrgsdf
     # return gdf_join
 
 def calculate_area(gdf_join):
@@ -102,21 +102,22 @@ if __name__ == "__main__":
 # ###########################################################################################
                     ### THIS IS THE BEGINNING
 # ###########################################################################################
-    print("very_very_simple_function()")
-    very_very_simple_function()
-    name = 'John'
-    print("very_simple_function(name)")
-    very_simple_function(name)  # this should print 'John'
-    print("very_simple_addition_function(2, 3)")
-    very_simple_addition_function(2, 3) #this should print 5
-    x = 2
-    y = 6
-    print("very_simple_multiplication_function(x, y)")
-    z = very_simple_multiplication_function(x, y) # Note that a variable is assigned here so that something can be returned to it
-    print("very_simple_option_argument_function(name)")
-    very_simple_option_argument_function(name) #For this one the default value for time_of_day will be used
-    very_simple_option_argument_function(name, time_of_day="Afternoon")  # For this one Afternoon will be used
-    very_simple_option_argument_function(name, time_of_day="Evening")  # For this one Evening will be used
+#     print("very_very_simple_function()")
+#     very_very_simple_function()
+#     name = 'John'
+#     print("very_simple_function(name)")
+#     very_simple_function(name)  # this should print 'John'
+#     print("very_simple_addition_function(2, 3)")
+#     very_simple_addition_function(2, 3) #this should print 5
+#     x = 2
+#     y = 6
+#     print("very_simple_multiplication_function(x, y)")
+#     z = very_simple_multiplication_function(x, y) # Note that a variable is assigned here so that something can be returned to it
+#     print(z)
+#     print("very_simple_option_argument_function(name)")
+#     very_simple_option_argument_function(name) #For this one the default value for time_of_day will be used
+#     very_simple_option_argument_function(name, time_of_day="Afternoon")  # For this one Afternoon will be used
+#     very_simple_option_argument_function(name, time_of_day="Evening")  # For this one Evening will be used
 # ###########################################################################################
                     ### THIS IS THE BEGINNING - ENDED
 # ###########################################################################################
@@ -127,30 +128,30 @@ if __name__ == "__main__":
                     ### THIS IS THE FUNCTIONS TO READ GEODATAFRAMES
 # ###########################################################################################
 # ----------------------------------------------------------------------------------------------------------------------
-#     BASE_DIRECTORY = Path(__file__).resolve().parent.joinpath('data')
-#     LA = BASE_DIRECTORY.joinpath('boundaries/LA_NI.shp')  # Path to LA Shapefile
-#     cols = ['LAD19CD', 'LAD19NM', 'LAD19NMW', 'BNG_E', 'BNG_N', 'geometry']
-#     index = 'LAD19CD'
-#     gdf_1 = open_geodataframe(LA) # This one will open the default way with all columns and no index set
-#     print(gdf_1.head())
-#     # -------------------------------------------
-#     # OPEN ONLY CERTAIN COLS
-#     # -------------------------------------------
-#     gdf_2 = open_geodataframe(LA, cols=cols)
-#     print(gdf_2.head())
-#     print(gdf_2.columns)
-#
-#     # -------------------------------------------
-#     #SET INDEX
-#     # -------------------------------------------
-#     gdf_3 = open_geodataframe(LA, index=index)
-#     print(gdf_3.head())
-#
-#     # -------------------------------------------
-#     # SET INDEX AND SELECT COLS
-#     # -------------------------------------------
-#     gdf_4 = open_geodataframe(LA, cols=cols, index=index)
-#     print(gdf_4.head())
+    BASE_DIRECTORY = Path(__file__).resolve().parent.joinpath('data')
+    LA = BASE_DIRECTORY.joinpath('boundaries/LA_NI.shp')  # Path to LA Shapefile
+    cols = ['LAD19CD', 'LAD19NM', 'LAD19NMW', 'BNG_E', 'BNG_N', 'geometry']
+    index = 'LAD19CD'
+    # gdf_1 = open_geodataframe(LA) # This one will open the default way with all columns and no index set
+    # print(gdf_1.head())
+    # # -------------------------------------------
+    # # OPEN ONLY CERTAIN COLS
+    # # -------------------------------------------
+    # gdf_2 = open_geodataframe(LA, cols=cols)
+    # print(gdf_2.head())
+    # print(gdf_2.columns)
+    #
+    # # -------------------------------------------
+    # #SET INDEX
+    # # -------------------------------------------
+    # gdf_3 = open_geodataframe(LA, index=index)
+    # print(gdf_3.head())
+    #
+    # # -------------------------------------------
+    # # SET INDEX AND SELECT COLS
+    # # -------------------------------------------
+    # gdf_4 = open_geodataframe(LA, cols=cols, index=index)
+    # print(gdf_4.head())
 
 # ###########################################################################################
                     ### THIS IS THE FUNCTIONS TO READ GEODATAFRAMES - ENDED
@@ -166,22 +167,26 @@ if __name__ == "__main__":
     # # -------------------------------------------
     # # Loop through a list of paths and open the shapefiles
     # # -------------------------------------------
-    # BASE_DIRECTORY = Path(__file__).resolve().parent.joinpath('data')  # This points to the folder holding the forests
-    # FORESTS = [x for x in BASE_DIRECTORY.joinpath('forests').iterdir() if x.name.endswith('.shp')]  # Making a list of shapefiles (end in .shp) in the BASE_DIRECTORY
-    # print(FORESTS)
-    # LA = BASE_DIRECTORY.joinpath('boundaries/LA_NI.shp')  # Path to LA Shapefile
-    # cols = ['LAD19CD', 'LAD19NM', 'LAD19NMW', 'BNG_E', 'BNG_N', 'geometry']
-    # index = 'LAD19CD'
-    # gdf_LA = open_geodataframe(LA)
-    # print(gdf_LA.head())
-    # SAM_GDF = pd.read_csv(BASE_DIRECTORY.joinpath('SAM/SAM_LAD_DEC_2019_UK.csv'))
-    # print(SAM_GDF.head())
-    # for forest in FORESTS:
-    #     gdf_forest = open_geodataframe(forest)
-    #     print(gdf_forest.head())
-    #     gdf_join = do_spatial_join(gdf_LA, gdf_forest)
-    #     gdf_area = calculate_area(gdf_join)
-    #     #gdf_final = calculate_proportion_forest(gdf_area, SAM_GDF)
+    BASE_DIRECTORY = Path(__file__).resolve().parent.joinpath('data')  # This points to the folder holding the forests
+    FORESTS = [x for x in BASE_DIRECTORY.joinpath('forests').iterdir() if x.name.endswith('.shp')]  # Making a list of shapefiles (end in .shp) in the BASE_DIRECTORY
+    print(FORESTS)
+    LA = BASE_DIRECTORY.joinpath('boundaries/LA_NI.shp')  # Path to LA Shapefile
+    cols = ['LAD19CD', 'LAD19NM', 'LAD19NMW', 'BNG_E', 'BNG_N', 'geometry']
+    index = 'LAD19CD'
+    gdf_LA = open_geodataframe(LA)  # Local authorities shapefile
+    print(gdf_LA.head())
+    SAM_GDF = pd.read_csv(BASE_DIRECTORY.joinpath('SAM/SAM_LAD_DEC_2019_UK.csv'))
+    print(SAM_GDF.head())
+    gdf_areas = []
+    for forest in FORESTS:
+        gdf_forest = open_geodataframe(forest)
+        print(gdf_forest.head())
+        gdf_join = do_spatial_join(gdf_LA, gdf_forest)
+        gdf_area = calculate_area(gdf_join)
+        #gdf_final = calculate_proportion_forest(gdf_area, SAM_GDF)
+        #gdf_final = gdf_final[[<COLUMN NAMES TO KEEP>]]
+        #gdf_areas.append(gdf_final)
+    #gdf_FINAL_PROPORTIONS = gpd.GeoDataFrame(pd.concat(gdf_areas), crs=27700)
 
 
 
